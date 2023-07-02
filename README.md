@@ -6,3 +6,12 @@
 ```shell
   docker-compose up --build
 ```
+
+
+## Добавить админа
+- Запустите контейнеры.
+- Создайте админа и введите его username, email и password:
+```shell
+  docker-compose exec django python src/manage.py createsuperuser
+```
+- Перейдите на http://127.0.0.1:8000/admin/

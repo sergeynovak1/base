@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+    <form method="get" action="{% url 'user_list' %}">
+        <label for="role">Role:</label>
+        <select name="role" id="role">
+            <option value="">Не выбрано</option>
+            {% for role in roles %}
+                <option value="{{ role.0 }}" {% if role_filter == role.0 %}selected{% endif %}>{{ role.1 }}</option>
+            {% endfor %}
+        </select>
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" value="{{ search_query|default_if_none:'' }}">
+        <button type="submit">Filter</button>
+    </form>
+    <button onclick="window.location.href='{% url 'create_user' %}'">Create User</button>
+    <table>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td><a href="{% url 'user_card' user.id %}">{{ user.username }}</a></td>
+                <td><a href="{% url 'user_card' user.id %}">{{ user.email }}</a></td>
+                <td>{{ user.get_role_display }}</td>
+            </tr>
+        {% empty %}
+            <td><h3>No users found.</h3></td>
+        {% endfor %}
+    </table>
+</body>
+</html>
