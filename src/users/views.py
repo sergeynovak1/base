@@ -32,14 +32,13 @@ def user_card(request, user_id):
 @user_passes_test(lambda u: u.is_superuser)
 def edit_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
+    form = EditProfileForm(instance=user)
 
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=user)
         if form.is_valid():
             user = form.save()
             return redirect(reverse('user_card', args=[user_id]))
-    else:
-        form = EditProfileForm(instance=user)
 
     return render(request, 'edit_user.html', {'form': form, 'roles': Role.choices, 'user_id': user_id})
 
@@ -56,6 +55,7 @@ def delete_user(request, user_id):
 
 @user_passes_test(lambda u: u.is_superuser)
 def create_user(request):
+    form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -78,6 +78,4 @@ def create_user(request):
                 )
 
             return redirect('user_list')
-    else:
-        form = CreateUserForm()
     return render(request, 'create_user.html', {'form': form})
