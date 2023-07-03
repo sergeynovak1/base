@@ -42,10 +42,10 @@
         {% for log in logs %}
             <tr>
                 <td>{{ log.id }}</td>
-                <td>{{ log.request_url }}</a></td>
-                <td>{{ log.client_ip }}</a></td>
-                <td>{{ log.request_method }}</a></td>
-                <td>{{ log.response_status_code }}</a></td>
+                <td><a href="{% url 'log_card' log.id %}">{{ log.request_url }}</a></td>
+                <td><a href="{% url 'log_card' log.id %}">{{ log.client_ip }}</a></td>
+                <td><a href="{% url 'log_card' log.id %}">{{ log.request_method }}</a></td>
+                <td><a href="{% url 'log_card' log.id %}">{{ log.response_status_code }}</a></td>
                 <td>{{ log.created_at }}</td>
             </tr>
         {% empty %}
