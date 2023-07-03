@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Card</title>
+</head>
+<body>
+    <h1>Log Card</h1>
+    <p><strong>Client IP:</strong> {{ log.client_ip }}</p>
+    <hr><h3>Request</h3>
+    <p><strong>URL:</strong> {{ log.request_url }}</p>
+    <p><strong>Method:</strong> {{ log.request_method }}</p>
+    <p><strong>Headers:</strong> {{ log.request_headers }}</p>
+    <p><strong>Body:</strong> {{ log.request_body }}</p>
+    <hr><h3>Responce</h3>
+    <p><strong>Status code:</strong> {{ log.response_status_code }}</p>
+    <p><strong>Body:</strong> {{ log.response_body }}</p><hr>
+
+    <p>created at: {{ log.created_at }}</p>
+
+</body>
+</html>
