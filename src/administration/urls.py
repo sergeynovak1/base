@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import user_list, user_card, edit_user, delete_user, create_user, logs_list, log_card
+from users.views import user_list, user_card, edit_user, delete_user, create_user
+from .views import logs_list, log_card
 
 urlpatterns = [
     path('users/', user_list, name='user_list'),

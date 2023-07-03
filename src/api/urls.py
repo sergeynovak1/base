@@ -6,5 +6,4 @@ urlpatterns = [
     path('users/<int:id>/', UserView.as_view(), name='user-detail'),
     path('get/', get_method, name='get'),
     path('post/', post_method, name='post'),
-
 ]
