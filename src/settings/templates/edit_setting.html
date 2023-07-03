@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Setting</title>
+</head>
+<body>
+    <h1>Edit Setting</h1>
+    <form method="post" action="{% url 'edit_setting' setting_id %}">
+        {% csrf_token %}
+        <p>Key: {{ key }}</p>
+        {{form.as_p}}
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

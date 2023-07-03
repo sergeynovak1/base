@@ -1,5 +1,6 @@
 from django.urls import path
 from users.views import user_list, user_card, edit_user, delete_user, create_user
+from settings.views import setting_list, setting_card, edit_setting
 from .views import logs_list, log_card
 
 urlpatterns = [
@@ -10,4 +11,8 @@ urlpatterns = [
     path('users/create/', create_user, name='create_user'),
     path('logs/', logs_list, name='log_list'),
     path('logs/<int:log_id>/', log_card, name='log_card'),
+    path('settings/', setting_list, name='setting_list'),
+    path('settings/<int:setting_id>/', setting_card, name='setting_card'),
+    path('settings/<int:setting_id>/edit/', edit_setting, name='edit_setting'),
+
 ]

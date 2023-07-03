@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Setting List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Setting List</h1>
+    <form method="get" action="{% url 'setting_list' %}">
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" value="{{ search_query|default_if_none:'' }}">
+        <button type="submit">Filter</button>
+    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Description</th>
+        </tr>
+        {% for setting in settings %}
+            <tr>
+                <td><a href="{% url 'setting_card' setting.id %}">{{ setting.id }}</a></td>
+                <td><a href="{% url 'setting_card' setting.id %}">{{ setting.key }}</a></td>
+                <td><a href="{% url 'setting_card' setting.id %}">{{ setting.value }}</a></td>
+                <td><a href="{% url 'setting_card' setting.id %}">{{ setting.description }}</a></td>
+            </tr>
+        {% empty %}
+            <td><h3>No settings found.</h3></td>
+        {% endfor %}
+    </table>
+</body>
+</html>
