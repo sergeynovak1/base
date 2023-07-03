@@ -5,6 +5,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.renderers import JSONRenderer
 
 from django.db.models import Q
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .serializers import UserSerializer
 from users.models import User
@@ -53,3 +56,14 @@ class UserView(APIView):
         queryset = User.objects.filter(id=id)
         queryset.delete()
         return Response(status=status.HTTP_200_OK)
+
+
+@csrf_exempt
+def get_method(request):
+    return HttpResponse("Ответ для GET запроса")
+
+
+@csrf_exempt
+def post_method(request):
+    return HttpResponse("Ответ для POST запроса")
+
