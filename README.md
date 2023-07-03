@@ -15,3 +15,9 @@
   docker-compose exec django python src/manage.py createsuperuser
 ```
 - Перейдите на http://127.0.0.1:8000/admin/
+
+## Получить значение настройки
+- Запустите контейнеры.
+```shell
+  docker-compose exec django python src/manage.py get_system_setting {key}
+```
