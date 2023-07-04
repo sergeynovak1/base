@@ -7,6 +7,11 @@ from api.models import APIRequestLog
 
 
 @user_passes_test(lambda u: u.is_superuser)
+def navigation(request):
+    return render(request, 'navigation.html')
+
+
+@user_passes_test(lambda u: u.is_superuser)
 def logs_list(request):
     method_filter = request.GET.get('method')
     search_query = request.GET.get('search')

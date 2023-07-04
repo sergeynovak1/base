@@ -1,9 +1,10 @@
 from django.urls import path
 from users.views import user_list, user_card, edit_user, delete_user, create_user
 from settings.views import setting_list, setting_card, edit_setting
-from .views import logs_list, log_card
+from .views import logs_list, log_card, navigation
 
 urlpatterns = [
+    path('', navigation, name='navigation'),
     path('users/', user_list, name='user_list'),
     path('users/<int:user_id>/', user_card, name='user_card'),
     path('users/<int:user_id>/edit/', edit_user, name='edit_user'),
